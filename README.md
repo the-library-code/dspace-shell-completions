@@ -6,8 +6,13 @@ This repository contains (nearly comprehensive, but not quite) shell completion 
 
 ## Installation/usage instructions
 
-With a POSIX-compatible make and complgen install, `make` will generate the completion files for bash, zsh, and fish.
+[In the `prebuilt` branch](https://github.com/the-library-code/dspace-shell-completions/tree/prebuilt) you can find pre-built completion scripts, so you don’t need to run `make` (or install complgen) yourself.
+
+If you do want to build the scripts yourself:
+
+With a POSIX-compatible make and complgen installed, `make` will generate the completion files for bash, zsh, and fish.
 
 You can then `source`/`.` the generated completion files.
 
 The bash completions depend on the standard `bash-completion` package. The zsh and fish completions should just work out-of-the-box.
+
