@@ -1,8 +1,8 @@
 all: dspace.bash dspace.zsh dspace.fish
 
 dspace.bash: dspace.usage
-	complgen aot --bash-script $@ $<
+	complgen --bash $@ $<
 dspace.zsh: dspace.usage
-	complgen aot --zsh-script $@ $<
+	complgen --zsh $@ $<
 dspace.fish: dspace.usage
-	complgen aot --fish-script $@ $<
+	complgen --fish $@ $<
