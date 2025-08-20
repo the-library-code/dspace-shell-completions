@@ -2,12 +2,12 @@ dspace bitstore-migrate
   "Migrate all files (bitstreams) from one assetstore (bitstore) to another"
   (<BITSTORE-MIGRATE-OPTION> ...) ;
 <BITSTORE-MIGRATE-OPTION> ::=
-  ((-a | --source) <ASSET-STORE>) "Source assetstore store_number (to lose content)"
-| ((-b | --destination) <ASSET-STORE>) "Destination assetstore store_number (to gain content)"
-| (-d | --delete) "Delete file from losing assetstore. (Default: Keep bitstream in old assetstore)"
-| (-h | --help) "Help"
-| (-p | --print) "Print out current assetstore information"
-| ((-s | --size) <SIZE>) "Batch commit size. (Default: 1, commit after each file transfer)"
+  ((--source || -a) <ASSET-STORE>) "Source assetstore store_number (to lose content)"
+| ((--destination || -b) <ASSET-STORE>) "Destination assetstore store_number (to gain content)"
+| (--delete || -d) "Delete file from losing assetstore. (Default: Keep bitstream in old assetstore)"
+| (--help || -h) "Help"
+| (--print || -p) "Print out current assetstore information"
+| ((--size || -s) <SIZE>) "Batch commit size. (Default: 1, commit after each file transfer)"
 ;
 
 
@@ -15,15 +15,15 @@ dspace checker
   "Run the checksum checker"
   (<CHECKER-OPTION> ...) ;
 <CHECKER-OPTION> ::=
-  (-L | --continuous) "Loop continuously through the bitstreams"
-| (-l | --looping) "Loop once through bitstreams"
-| ((-a | --handle) <HANDLE>) "Specify a handle to check"
+  (--continuous || -L) "Loop continuously through the bitstreams"
+| (--looping || -l) "Loop once through bitstreams"
+| ((--handle || -a) <HANDLE>) "Specify a handle to check"
 | (-b <BITSTREAM-IDS>) "Space separated list of bitstream IDs"
-| (-c | --count) "Check count"
-| (-d | --duration) "Checking duration"
-| ((-p | --prune) <PATH>) "Prune old results"
-| (-v | --verbose) "Report all processing"
-| (-h | --help) "Help"
+| (--count || -c) "Check count"
+| (--duration || -d) "Checking duration"
+| ((--prune || -p) <PATH>) "Prune old results"
+| (--verbose || -v) "Report all processing"
+| (--help || -h) "Help"
 ;
 
 
@@ -52,11 +52,11 @@ dspace community-filiator
   "Tool to manage community and sub-community relationships"
   (<COMMUNITY-FILIATOR-OPTION> ...) ;
 <COMMUNITY-FILIATOR-OPTION> ::=
-  (-s | --set) "Set a parent/child relationship"
-| (-r | --remote) "Remove a parent/child relationship"
-| ((-c | --child) <HANDLE-OR-ID>) "Child community"
-| ((-p | --parent) <HANDLE-OR-ID>) "Parent community"
-| (-h | --help) "Help"
+  (--set || -s) "Set a parent/child relationship"
+| (--remote || -r) "Remove a parent/child relationship"
+| ((--child || -c) <HANDLE-OR-ID>) "Child community"
+| ((--parent || -p) <HANDLE-OR-ID>) "Parent community"
+| (--help || -h) "Help"
 ;
 
 
@@ -64,12 +64,12 @@ dspace create-administrator
   "Create a DSpace administrator account"
   (<CREATE-ADMINISTRATOR-OPTION> ...) ;
 <CREATE-ADMINISTRATOR-OPTION> ::=
-  ((-c | --language) <LANGUAGE>) "Administrator language"
-| ((-e | --email) <EMAIL>) "Administrator email address"
-| ((-f | --first) <NAME>) "Administrator first name"
-| ((-l | --last) <NAME>) "Administrator last name"
-| ((-p | --password) <PASSWORD>) "Administrator password"
-| (-h | --help) "Help"
+  ((--language || -c) <LANGUAGE>) "Administrator language"
+| ((--email || -e) <EMAIL>) "Administrator email address"
+| ((--first || -f) <NAME>) "Administrator first name"
+| ((--last || -l) <NAME>) "Administrator last name"
+| ((--password || -p) <PASSWORD>) "Administrator password"
+| (--help || -h) "Help"
 ;
 
 
@@ -77,16 +77,16 @@ dspace curate
   "Perform curation tasks on DSpace objects"
   (<CURATE-OPTION> ...) ;
 <CURATE-OPTION> ::=
-  ((-e | --eperson) <EMAIL>) "Email address of curating eperson"
-| ((-i | --id) <HANDLE>) "Id (handle) of object to perform task on, or 'all' to perform on whole repository"
-| ((-p | --parameter) <ARG>) "A task parameter 'NAME=VALUE'"
-| ((-q | --queue) <QUEUE>) "Name of task queue to process"
-| ((-r | --reporter) <PATH>) "Path to desired report file"
-| ((-s | --scope) (object | curation | open)) "Transaction scope to impose"
-| ((-t | --task) (noop | profileformats | requiredmetadata | checklinks | registerdoi)) "Curation task name"
-| ((-T | --taskfile) <PATH>) "File containing curation task names"
-| (-v | --verbose) "Report activity to stdout"
-| (-h | --help) "Help"
+  ((--eperson || -e) <EMAIL>) "Email address of curating eperson"
+| ((--id || -i) <HANDLE>) "Id (handle) of object to perform task on, or 'all' to perform on whole repository"
+| ((--parameter || -p) <ARG>) "A task parameter 'NAME=VALUE'"
+| ((--queue || -q) <QUEUE>) "Name of task queue to process"
+| ((--reporter || -r) <PATH>) "Path to desired report file"
+| ((--scope || -s) (object | curation | open)) "Transaction scope to impose"
+| ((--task || -t) (noop | profileformats | requiredmetadata | checklinks | registerdoi)) "Curation task name"
+| ((--taskfile || -T) <PATH>) "File containing curation task names"
+| (--verbose || -v) "Report activity to stdout"
+| (--help || -h) "Help"
 ;
 
 dspace database test "Performs a test connection to database to validate connection settings" ;
@@ -103,18 +103,18 @@ dspace doi-organiser
   "Transmit information about DOIs to the registration agency"
   (<DOI-ORGANISER-OPTION> ...) ;
 <DOI-ORGANISER-OPTION> ::=
-  (-d | --delete-all) "Perform online deletion for all identifiers queued for deletion"
+  (--delete-all || -d) "Perform online deletion for all identifiers queued for deletion"
 | (--delete-doi <DOI>) "Delete a specified identifier"
 | (--filter <FILTER-NAME>) "Use the specified filter name instead of the provider's filter"
-| (-l | --list) "List all objects to be reserved, registered, deleted or updated"
-| (-q | --quiet) "Turn the command line output off"
-| (-r | --register-all) "Perform online registration for all identifiers queued for registration"
+| (--list || -l) "List all objects to be reserved, registered, deleted or updated"
+| (--quiet || -q) "Turn the command line output off"
+| (--register-all || -r) "Perform online registration for all identifiers queued for registration"
 | (--register-doi <DOI-OR-HANDLE-OR-ID>) "Register a specified identifier"
 | (--reserve-doi <DOI-OR-HANDLE-OR-ID>) "Reserve a specified identifier online"
-| (-s | --reserve-all) "Perform online reservation for all identifiers queued for reservation"
-| (-u | --update-all) "Perform online metadata update for all identifiers queued for metadata update"
+| (--reserve-all || -s) "Perform online reservation for all identifiers queued for reservation"
+| (--update-all || -u) "Perform online metadata update for all identifiers queued for metadata update"
 | (--update-doi <DOI-OR-HANDLE-OR-ID>) "Update online an object"
-| (-h | --help) "Help"
+| (--help || -h) "Help"
 ;
 
 
@@ -122,11 +122,11 @@ dspace dsprop
   "Display the value of a DSpace configuration property"
   (<DSPROP-OPTION> ...) ;
 <DSPROP-OPTION> ::=
-  (-f | --first) "Display only the first value of an array property"
-| ((-m | --module) <MODULE>) "Name of the module in which property exists"
-| ((-p | --property) <PROPERTY>) "Name of the desired property"
-| (-r | --raw) "Do not do property substitution on the value"
-| (-h | --help | -?) "Help"
+  (--first || -f) "Display only the first value of an array property"
+| ((--module || -m) <MODULE>) "Name of the module in which property exists"
+| ((--property || -p) <PROPERTY>) "Name of the desired property"
+| (--raw || -r) "Do not do property substitution on the value"
+| ((--help) | (-? || -h)) "Help"
 ;
 
 
@@ -141,13 +141,13 @@ dspace export
   "Export items or collections"
   (<EXPORT-OPTION> ...) ;
 <EXPORT-OPTION> ::=
-  ((-t | --type) (ITEM | COLLECTION)) "Type of export"
-| ((-i | --id) <HANDLE-OR-ID>) "ID or handle of thing to export"
-| (-m | --migrate) "Export for migration"
-| ((-n | --number) <NUMBER>) "Sequence number to begin exporting items with"
-| (-x | --exclude-bitstreams) "Do not export bitstreams"
-| ((-z | --zip) <PATH>) "Export as zip file to path"
-| (-h | --help) "Help"
+  ((--type || -t) (ITEM | COLLECTION)) "Type of export"
+| ((--id || -i) <HANDLE-OR-ID>) "ID or handle of thing to export"
+| (--migrate || -m) "Export for migration"
+| ((--number || -n) <NUMBER>) "Sequence number to begin exporting items with"
+| (--exclude-bitstreams || -x) "Do not export bitstreams"
+| ((--zip || -z) <PATH>) "Export as zip file to path"
+| (--help || -h) "Help"
 ;
 
 
@@ -155,13 +155,13 @@ dspace filter-media
   "Perform the media filtering to extract full text from documents and to create thumbnails"
   (<FILTER-MEDIA-OPTION> ...) ;
 <FILTER-MEDIA-OPTION> ::=
-  (-f | --force) "Force all bitstreams to be processed"
-| ((-i | --identifier) <HANDLE>) "Only process bitstreams belonging to the provided handle"
-| ((-m | --maximum) <NUMBER>) "Process no more than maximum items"
-| ((-p | --plugins) <PLUGIN>) "Only run the specified Media Filter plugins (comma separated)"
-| (-q | --quiet) "Do not print anything except in the event of errors"
-| ((-s | --skip) <ID>) "Skip bitstreams belonging to the identifier(s), comma separated"
-| (-h | --help) "Help"
+  (--force || -f) "Force all bitstreams to be processed"
+| ((--identifier || -i) <HANDLE>) "Only process bitstreams belonging to the provided handle"
+| ((--maximum || -m) <NUMBER>) "Process no more than maximum items"
+| ((--plugins || -p) <PLUGIN>) "Only run the specified Media Filter plugins (comma separated)"
+| (--quiet || -q) "Do not print anything except in the event of errors"
+| ((--skip || -s) <ID>) "Skip bitstreams belonging to the identifier(s), comma separated"
+| (--help || -h) "Help"
 ;
 
 
@@ -169,10 +169,10 @@ dspace generate-sitemaps
   "Generate search engine and html sitemaps"
   (<GENERATE-SITEMAPS-OPTION> ...) ;
 <GENERATE-SITEMAPS-OPTION> ::=
-  (-b | --no_htmlmap) "Do not generate a basic HTML sitemap"
-| (-d | --delete) "Delete sitemaps dir and its contents"
-| (-s | --no_sitemaps) "Do not generate sitemaps.org protocol sitemap"
-| (-h | --help) "Help"
+  (--no_htmlmap || -b) "Do not generate a basic HTML sitemap"
+| (--delete || -d) "Delete sitemaps dir and its contents"
+| (--no_sitemaps || -s) "Do not generate sitemaps.org protocol sitemap"
+| (--help || -h) "Help"
 ;
 
 
@@ -180,21 +180,21 @@ dspace harvest
   "Manage the OAI-PMH harvesting of external collections"
   (<HARVEST-OPTION> ...) ;
 <HARVEST-OPTION> ::=
-  ((-a | --address) <URL>) "Address of the OAI-PMH server"
-| ((-c | --collection) <HANDLE-OR-ID>) "Harvesting collection"
-| ((-e | --eperson) <EMAIL>) "Email address of the Eperson"
-| (-g | --ping) "Test the OAI server and set"
-| ((-i | --oai_set_id) <PMH-SET-ID>) "Id of the PMH set for the harvested collection"
-| ((-m | --metadata_format) <FORMAT>) "Name of the desired metadata format for harvesting"
-| (-o | --reimport) "Reimport all items in the collection (equivalent to -p -r)"
-| (-p | --purge) "Delete all items in the collection"
-| (-P | --purgeCollections) "Purge all harvestable collections"
-| (-r | --run) "Run the standard harvest procedure"
-| (-R | --reset) "Reset harvest status on all collections"
-| (-s | --setup) "Set the collection up for harvesting"
-| (-S | --start) "Start the harvest loop"
-| ((-t | --type) (0 "No harvesting" | 1 "Metadata only" | 2 "Metadata and bitstream references" | 3 "Metadata and bitstreams")) "Type of harvesting"
-| (-h | --help) "Help"
+  ((--address || -a) <URL>) "Address of the OAI-PMH server"
+| ((--collection || -c) <HANDLE-OR-ID>) "Harvesting collection"
+| ((--eperson || -e) <EMAIL>) "Email address of the Eperson"
+| (--ping || -g) "Test the OAI server and set"
+| ((--oai_set_id || -i) <PMH-SET-ID>) "Id of the PMH set for the harvested collection"
+| ((--metadata_format || -m) <FORMAT>) "Name of the desired metadata format for harvesting"
+| (--reimport || -o) "Reimport all items in the collection (equivalent to -p -r)"
+| (--purge || -p) "Delete all items in the collection"
+| (--purgeCollections || -P) "Purge all harvestable collections"
+| (--run || -r) "Run the standard harvest procedure"
+| (--reset || -R) "Reset harvest status on all collections"
+| (--setup || -s) "Set the collection up for harvesting"
+| (--start || -S) "Start the harvest loop"
+| ((--type || -t) (0 "No harvesting" | 1 "Metadata only" | 2 "Metadata and bitstream references" | 3 "Metadata and bitstreams")) "Type of harvesting"
+| (--help || -h) "Help"
 ;
 
 
@@ -202,23 +202,23 @@ dspace import
   "Import items or collections"
   (<IMPORT-OPTION> ...) ;
 <IMPORT-OPTION> ::=
-  (-a | --add) "Add items to DSpace"
-| ((-c | --collection) <HANDLE-OR-ID>) "Destination collection(s)"
-| ((-d | --delete)) "Delete items listed in mapfile"
-| ((-e | --eperson) <EMAIL>) "Email address of eperson doing the importing"
-| ((-m | --mapfile) <PATH>) "Mapfile for items"
-| (-n | --notify) "Send notification emails"
-| (-p | --template) "Apply the collection template"
-| (-q | --quiet) "Don't display metadata"
-| (-r | --replace) "Replace items listed in mapfile"
-| (-R | --resume) "Resume a failed import"
-| ((-s | --source) <PATH>) "Source of items"
-| ((-u | --url) <URL>) "URL of zip file"
-| (-v | --validate) "Test run (do not actually import items)"
-| (-w | --workflow) "Send submission through collection's workflow"
-| (-x | --exclude-bitstreams) "Do not load or expect content bitstreams"
-| ((-z | --zip) <PATH>) "Name of zip file"
-| (-h | --help) "Help"
+  (--add || -a) "Add items to DSpace"
+| ((--collection || -c) <HANDLE-OR-ID>) "Destination collection(s)"
+| ((--delete || -d)) "Delete items listed in mapfile"
+| ((--eperson || -e) <EMAIL>) "Email address of eperson doing the importing"
+| ((--mapfile || -m) <PATH>) "Mapfile for items"
+| (--notify || -n) "Send notification emails"
+| (--template || -p) "Apply the collection template"
+| (--quiet || -q) "Don't display metadata"
+| (--replace || -r) "Replace items listed in mapfile"
+| (--resume || -R) "Resume a failed import"
+| ((--source || -s) <PATH>) "Source of items"
+| ((--url || -u) <URL>) "URL of zip file"
+| (--validate || -v) "Test run (do not actually import items)"
+| (--workflow || -w) "Send submission through collection's workflow"
+| (--exclude-bitstreams || -x) "Do not load or expect content bitstreams"
+| ((--zip || -z) <PATH>) "Name of zip file"
+| (--help || -h) "Help"
 ;
 
 
@@ -229,16 +229,16 @@ dspace index-discovery
   "Update Discovery (Solr) search and browse Index"
   (<INDEX-DISCOVERY-OPTION> ...) ;
 <INDEX-DISCOVERY-OPTION> ::=
-  (-b | --build) "(Re)build index, wiping out current one if it exists"
-| (-c | --clean) "Clean existing index, removing documents no longer in the DB"
-| (-d | --delete) "Delete all records from existing index"
-| (-f | --force) "If updating existing index, force each handle to be reindexed even if up-to-date"
-| ((-i | --index) <HANDLE-OR-ID>) "Add or update object (handle or UUID)"
-| ((-r | --remove) <HANDLE-OR-ID>) "Remove an object (handle or UUID)"
-| (-s | --spellchecker) "Rebuild the spellchecker"
-| ((-t | --type) (ClaimedTask | Collection | Community | Item | PoolTask | XmlWorkflowItem | WorkspaceItem | MetadataField | LDNMessageEntity))
+  (--build || -b) "(Re)build index, wiping out current one if it exists"
+| (--clean || -c) "Clean existing index, removing documents no longer in the DB"
+| (--delete || -d) "Delete all records from existing index"
+| (--force || -f) "If updating existing index, force each handle to be reindexed even if up-to-date"
+| ((--index || -i) <HANDLE-OR-ID>) "Add or update object (handle or UUID)"
+| ((--remove || -r) <HANDLE-OR-ID>) "Remove an object (handle or UUID)"
+| (--spellchecker || -s) "Rebuild the spellchecker"
+| ((--type || -t) (ClaimedTask | Collection | Community | Item | PoolTask | XmlWorkflowItem | WorkspaceItem | MetadataField | LDNMessageEntity))
     "Reindex only specific type of indexable object"
-| (-h | --help) "Help"
+| (--help || -h) "Help"
 ;
 
 
@@ -246,18 +246,18 @@ dspace itemupdate
   "Item update tool for altering metadata and bitstream content in items"
   (<ITEMUPDATE-OPTION> ...) ;
 <ITEMUPDATE-OPTION> ::=
-  ((-a | --addmetadata) <METADATA>) "Add metadata specified for each item (semicolon separated)"
-| (-A | --addbitstreams) "Add bitstreams as specified for each item"
-| ((-d | --deletemetadata) <METADATA>) "Delete metadata specified for each item"
-| ((-D | --deletebitstreams) <BITSTREAM-FILTER>) "Delete bitstreams as specified for each item"
-| ((-e | --eperson) <EMAIL>) "Email address of eperson doing the update"
-| ((-F | --filter-properties) <CLASS-NAME>) "Filter class name (only for deleting bitstream)"
-| ((-i | --itemfield) <METADATA>) "Metadata field containing item identifier (default: dc.identifier.uri)"
-| (-P | --provenance) "Suppress altering provenance field for bitstream changes"
-| ((-s | --source) <PATH>) "Root directory of source DSpace archive"
-| (-t | --test) "Test run (do not actually import items)"
-| (-v | --verbose) "Verbose logging"
-| (-h | --help) "Help"
+  ((--addmetadata || -a) <METADATA>) "Add metadata specified for each item (semicolon separated)"
+| (--addbitstreams || -A) "Add bitstreams as specified for each item"
+| ((--deletemetadata || -d) <METADATA>) "Delete metadata specified for each item"
+| ((--deletebitstreams || -D) <BITSTREAM-FILTER>) "Delete bitstreams as specified for each item"
+| ((--eperson || -e) <EMAIL>) "Email address of eperson doing the update"
+| ((--filter-properties || -F) <CLASS-NAME>) "Filter class name (only for deleting bitstream)"
+| ((--itemfield || -i) <METADATA>) "Metadata field containing item identifier (default: dc.identifier.uri)"
+| (--provenance || -P) "Suppress altering provenance field for bitstream changes"
+| ((--source || -s) <PATH>) "Root directory of source DSpace archive"
+| (--test || -t) "Test run (do not actually import items)"
+| (--verbose || -v) "Verbose logging"
+| (--help || -h) "Help"
 ;
 
 
@@ -268,11 +268,11 @@ dspace metadata-export
   "Export metadata for batch editing"
   (<METADATA-EXPORT-OPTION> ...) ;
 <METADATA-EXPORT-OPTION> ::=
-  (-a | --all) "Include all metadata fields that are not normally changed (e.g. provenance)"
-| ((-f | --file) <PATH>) "Destination to write the file"
-| ((-i | --id) <HANDLE-OR-ID>) "ID or handle of thing to export (item, collection, or community)"
-| ((-o | --output-format) (csv | bibtex | ris)) "Output format of metadata"
-| (-h | --help) "Help"
+  (--all || -a) "Include all metadata fields that are not normally changed (e.g. provenance)"
+| ((--file || -f) <PATH>) "Destination to write the file"
+| ((--id || -i) <HANDLE-OR-ID>) "ID or handle of thing to export (item, collection, or community)"
+| ((--output-format || -o) (csv | bibtex | ris)) "Output format of metadata"
+| (--help || -h) "Help"
 ;
 
 
@@ -280,14 +280,14 @@ dspace metadata-import
   "Import metadata after batch editing"
   (<METADATA-IMPORT-OPTION> ...) ;
 <METADATA-IMPORT-OPTION> ::=
-  ((-e | --email) <EMAIL>) "Email address or user ID of user (required if adding new items)"
-| ((-f | --file) <PATH>) "Source file"
-| (-n | --notify) "Send notification emails on new items using workflow"
-| (-s | --silent) "Silent operation (use with caution)"
-| (-t | --template) "When adding items, use the collection template"
-| (-v | --validate-only) "Just validate the CSV, don't run the import"
-| (-w | --workflow) "When adding items, use the collection workflow"
-| (-h | --help) "Help"
+  ((--email || -e) <EMAIL>) "Email address or user ID of user (required if adding new items)"
+| ((--file || -f) <PATH>) "Source file"
+| (--notify || -n) "Send notification emails on new items using workflow"
+| (--silent || -s) "Silent operation (use with caution)"
+| (--template || -t) "When adding items, use the collection template"
+| (--validate-only || -v) "Just validate the CSV, don't run the import"
+| (--workflow || -w) "When adding items, use the collection workflow"
+| (--help || -h) "Help"
 ;
 
 
@@ -295,14 +295,14 @@ dspace migrate-embargo
   "Embargo manager tool used to migrate old version of Embargo to the new one included in dspace3"
   (<MIGRATE-EMBARGO-OPTION> ...) ;
 <MIGRATE-EMBARGO-OPTION> ::=
-  (-a | --adjust) "Adjust bitstreams policies"
-| (-c | --check) "Do not lift any embargoes, only check status of embargoed items"
-| ((-i | --id) <HANDLE-OR-ID>) "Process only these items (by ID)"
-| (-l | --list) "Only lift embargoes, do not check the status"
-| (-n | --dryrun) "Do not change anything, print messages instead"
-| (-q | --quiet) "Do not print anything except for errors"
-| (-v | --verbose) "Print a line describing action taken for each embargoed Item found"
-| (-h | --help) "Help"
+  (--adjust || -a) "Adjust bitstreams policies"
+| (--check || -c) "Do not lift any embargoes, only check status of embargoed items"
+| ((--id || -i) <HANDLE-OR-ID>) "Process only these items (by ID)"
+| (--list || -l) "Only lift embargoes, do not check the status"
+| (--dryrun || -n) "Do not change anything, print messages instead"
+| (--quiet || -q) "Do not print anything except for errors"
+| (--verbose || -v) "Print a line describing action taken for each embargoed Item found"
+| (--help || -h) "Help"
 ;
 
 
@@ -321,20 +321,20 @@ dspace packager
   "Execute a packager"
   (<PACKAGER-OPTION> ...) <PATH> ;
 <PACKAGER-OPTION> ::=
-  (-a | --all) "Also recursively ingrest any child packages (e.g. all items in collection)"
-| (-d | --disseminate) "Disseminate package (output)"
-| ((-e | --eperson) <EMAIL>) "Email address of the eperson doing importing"
-| (-f | --force-replace) "Replace already existing objects found during a restore (-r) instead of error"
-| ((-i | --identifier) <HANDLE-OR-ID>) "Object to disseminate"
-| (-k | --keep-existing) "Keep already existing objects found during a restore (-r) instead of error"
-| ((-o | --option) <OPTION>) "Packager option to pass to plugin, name=value"
-| ((-p | --parent) <HANDLE-OR-ID>) "Handle of parent community or collection to ingest object"
-| (-r | --restore) "Ingest in restore mode; restore missing object based on package contents"
-| (-s | --submit) "Submission package (input)"
-| (-t | --type) "Package type or MIME type"
-| (-u | --no-user-interaction) "Skip over user interaction"
-| (-w | --install) "Disable workflow; install immediately without going through collection's workflow"
-| (-h | --help) "Help"
+  (--all || -a) "Also recursively ingrest any child packages (e.g. all items in collection)"
+| (--disseminate || -d) "Disseminate package (output)"
+| ((--eperson || -e) <EMAIL>) "Email address of the eperson doing importing"
+| (--force-replace || -f) "Replace already existing objects found during a restore (-r) instead of error"
+| ((--identifier || -i) <HANDLE-OR-ID>) "Object to disseminate"
+| (--keep-existing || -k) "Keep already existing objects found during a restore (-r) instead of error"
+| ((--option || -o) <OPTION>) "Packager option to pass to plugin, name=value"
+| ((--parent || -p) <HANDLE-OR-ID>) "Handle of parent community or collection to ingest object"
+| (--restore || -r) "Ingest in restore mode; restore missing object based on package contents"
+| (--submit || -s) "Submission package (input)"
+| (--type || -t) "Package type or MIME type"
+| (--no-user-interaction || -u) "Skip over user interaction"
+| (--install || -w) "Disable workflow; install immediately without going through collection's workflow"
+| (--help || -h) "Help"
 ;
 
 
@@ -342,24 +342,24 @@ dspace process-cleaner
   "Delete old Processes from the system"
   (<PROCESS-CLEANER-OPTION> ...) ;
 <PROCESS-CLEANER-OPTION> ::=
-  (-c | --completed) "Delete process with completed status (default)"
-| (-f | --failed) "Delete process with failed status"
-| (-r | --runing) "Delete process with running status"
-| (-h | --help) "Help"
+  (--completed || -c) "Delete process with completed status (default)"
+| (--failed || -f) "Delete process with failed status"
+| (--runing || -r) "Delete process with running status"
+| (--help || -h) "Help"
 ;
 
 dspace rdfizer
   "Tool to convert contents to RDF"
   (<RDFIZER-OPTION> ...) ;
 <RDFIZER-OPTION> ::=
-  (-c | --convert-all) "Convert all DSpace Objects that are readable anonymously"
-| (--delete (<HANDLE> | <URL>)) "Delete previously converted data"
+  (--convert-all || -c) "Convert all DSpace Objects that are readable anonymously"
+| (--delete <HANDLE-OR-URL>) "Delete previously converted data"
 | (--delete-all) "Delete all converted data from the triplestore"
-| ((-i | --identifiers) <HANDLE>) "Only convert these Objects"
-| (-n | --dry-run) "Don't send any commands or data to the triplestore"
-| (-o | --stdout) "Print all converted data to stdout as turtle"
-| (-v | --verbose) "Print verbose information to stderr while converting"
-| (-h | --help) "Help"
+| ((--identifiers || -i) <HANDLE>) "Only convert these Objects"
+| (--dry-run || -n) "Don't send any commands or data to the triplestore"
+| (--stdout || -o) "Print all converted data to stdout as turtle"
+| (--verbose || -v) "Print verbose information to stderr while converting"
+| (--help || -h) "Help"
 ;
 
 
@@ -376,11 +376,11 @@ dspace structure-builder
   (<STRUCTURE-BUILDER-OPTION> ...) ;
 <STRUCTURE-BUILDER-OPTION> ::=
   -k # not documented :-/
-| (-x | --export) "Export the current structure as XML"
-| ((-e | --eperson) <EMAIL>) "Email address of the eperson doing the operation"
-| ((-o | --output) <PATH>) "Output XML file"
+| (--export || -x) "Export the current structure as XML"
+| ((--eperson || -e) <EMAIL>) "Email address of the eperson doing the operation"
+| ((--output || -o) <PATH>) "Output XML file"
 | (-f <PATH>) "Source XML file"
-| (-h | --help | -?) "Help"
+| (--help | -? || -h) "Help"
 ;
 
 
@@ -400,23 +400,24 @@ dspace user
   "Create, List, Update, Delete EPerson (user) records"
   (<USER-OPTION> ...) ;
 <USER-OPTION> ::=
-  (-a | --add) "Create a new EPerson"
-| (-d | --delete) "Delete an existing EPerson"
-| (-l | --list) "List EPersons"
-| (-M | --modify) "Modify an EPerson"
-| ((-m | --email) <EMAIL>) "Email address for the EPerson (existing, if modifying)"
-| ((-n | --netid) <NETID>) "netid (e.g. from an external directory service; existing, if modifying)"
-| ((-p | --password) <PASSWORD>) "Password of the created EPerson"
-| ((-g | --givenname) <NAME>) "First or given name of the EPerson"
-| ((-s | --surname) <NAME>) "Last or surname of the EPerson"
-| ((-t | --telephone) <TELEPHONE>) "Telephone number for the EPerson"
-| ((-l | --language) <LANGUAGE>) "Preferred language for the EPerson"
-| (-c | --requireCertificate) "Require X.509 certificate"
-| (-C | --canLogin) "Enable or disable account"
-| ((-i | --newEmail) <EMAIL>) "New email address for modifying EPerson"
-| ((-I | --newNetid) <NETID>) "New netid for modifying EPerson"
-| ((-w | --newPassword) <PASSWORD>) "New password for modifying EPerson"
-| (-h | --help) "Help"
+  (--add || -a) "Create a new EPerson"
+| (--delete || -d) "Delete an existing EPerson"
+| (--list || -l) "List EPersons"
+| (--modify || -M) "Modify an EPerson"
+| ((--email || -m) <EMAIL>) "Email address for the EPerson (existing, if modifying)"
+| ((--netid || -n) <NETID>) "netid (e.g. from an external directory service; existing, if modifying)"
+| ((--password || -p) <PASSWORD>) "Password of the created EPerson"
+| ((--givenname || -g) <NAME>) "First or given name of the EPerson"
+| ((--surname || -s) <NAME>) "Last or surname of the EPerson"
+| ((--telephone || -t) <TELEPHONE>) "Telephone number for the EPerson"
+| ((--language # || -l ### commented out because it conflicts with -l for list
+   ) <LANGUAGE>) "Preferred language for the EPerson"
+| (--requireCertificate || -c) "Require X.509 certificate"
+| (--canLogin || -C) "Enable or disable account"
+| ((--newEmail || -i) <EMAIL>) "New email address for modifying EPerson"
+| ((--newNetid || -I) <NETID>) "New netid for modifying EPerson"
+| ((--newPassword || -w) <PASSWORD>) "New password for modifying EPerson"
+| (--help || -h) "Help"
 
 
 dspace validate-date "Test date-time format rules" <DATE> ;
